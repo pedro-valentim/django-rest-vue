@@ -21,12 +21,8 @@ As informações que devem ser armazenadas de cada local são:
 # Operações desejadas
 
 * Lista de produto (tipo vitrine de e-commerce)
- - Listar produtos em uma página web. Pelo menos 3 produtos.
+	- Listar produtos em uma página web. Pelo menos 3 produtos.
 * Página com um produto selecionado (tipo página de produto de e-commerce)
- - Selecionar o produto na página de vitrine e abrir a página de produto.
+	- Selecionar o produto na página de vitrine e abrir a página de produto.
 * API de produtos
- - Criar API de produtos em Rest Framework.
-
-
-
-USER: v4ll1unz
+	- Criar API de produtos em Rest Framework.
