@@ -1,3 +1,4 @@
+from django.views.generic import TemplateView
 from rest_framework import viewsets
 from backend.serializers import ProductSerializer
 from backend.models import Product
@@ -9,3 +10,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     queryset = Product.objects.all().order_by('-date_created')
     serializer_class = ProductSerializer
+
+
+class IndexView(TemplateView):
+    template_name = 'index.html'

@@ -1,77 +1,120 @@
 <template>
-    <div id="app">
+  <div class="page-container md-layout-column">
+    <md-toolbar class="md-primary">
+      <md-button class="md-icon-button" @click="showNavigation = true">
+        <md-icon>menu</md-icon>
+      </md-button>
+      <span class="md-title">{{ title }}</span>
 
-        <img src="./assets/logo.png">
-        <h1>{{ msg }}</h1><br>
-        <div class="elevation-demo">
-            <md-content class="md-elevation-1">1</md-content>
-            <md-content class="md-elevation-2">2</md-content>
-            <md-content class="md-elevation-3">3</md-content>
-            <md-content class="md-elevation-4">4</md-content>
-            <md-content class="md-elevation-5">5</md-content>
-            <md-content class="md-elevation-6">6</md-content>
-            <md-content class="md-elevation-7">7</md-content>
-            <md-content class="md-elevation-8">8</md-content>
-            <md-content class="md-elevation-9">9</md-content>
-            <md-content class="md-elevation-10">10</md-content>
-            <md-content class="md-elevation-11">11</md-content>
-            <md-content class="md-elevation-12">12</md-content>
-            <md-content class="md-elevation-13">13</md-content>
-            <md-content class="md-elevation-14">14</md-content>
-            <md-content class="md-elevation-15">15</md-content>
-            <md-content class="md-elevation-16">16</md-content>
-            <md-content class="md-elevation-17">17</md-content>
-            <md-content class="md-elevation-18">18</md-content>
-            <md-content class="md-elevation-19">19</md-content>
-            <md-content class="md-elevation-20">20</md-content>
-            <md-content class="md-elevation-21">21</md-content>
-            <md-content class="md-elevation-22">22</md-content>
-            <md-content class="md-elevation-23">23</md-content>
-            <md-content class="md-elevation-24">24</md-content>
+      <div class="md-toolbar-section-end">
+        <md-button @click="showSidepanel = true">REST API</md-button>
+      </div>
+    </md-toolbar>
+
+    <md-drawer :md-active.sync="showNavigation">
+      <md-toolbar class="md-transparent" md-elevation="0">
+        <span class="md-title">{{ appName }}</span>
+      </md-toolbar>
+
+      <md-list>
+        <md-list-item>
+          <md-icon>grid_on</md-icon>
+          <span class="md-list-item-text">Vitrine</span>
+        </md-list-item>
+      </md-list>
+    </md-drawer>
+
+    <md-drawer class="md-right" :md-active.sync="showSidepanel">
+      <md-toolbar class="md-transparent" md-elevation="0">
+        <span class="md-title">REST API</span>
+        <md-button class="md-icon-button md-list-action">
+          <md-icon class="md-primary">code</md-icon>
+        </md-button>
+      </md-toolbar>
+
+      <md-list>
+        <md-list-item href="/api" target="_blank">
+          <span class="md-list-item-text">/api</span>
+        </md-list-item>
+
+        <md-list-item href="/api/products" target="_blank">
+          <span class="md-list-item-text">/api/products</span>
+        </md-list-item>
+      </md-list>
+    </md-drawer>
+
+    <md-content>
+      <div class="md-layout md-gutter md-alignment-center">
+        <div class="product md-layout-item md-medium-size-50 md-small-size-50 md-xsmall-size-100" v-for="product in products">
+          <md-card>
+            <md-card-media-cover md-text-scrim>
+              <md-card-media md-ratio="4:3">
+                <img :src="product.photo" alt="Alt Text">
+              </md-card-media>
+
+              <md-card-area>
+                <md-card-header>
+                  <span class="md-title">{{ product.name }}</span>
+                  <span class="md-subhead">$ {{ product.price }}</span>
+                </md-card-header>
+
+                <md-card-actions>
+                  <md-button>See More</md-button>
+                </md-card-actions>
+              </md-card-area>
+            </md-card-media-cover>
+          </md-card>
         </div>
-    </div>
+      </div>
+    </md-content>
+  </div>
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
     name: 'app',
-    data () {
-        return {
-            msg: 'Welcome to Your Vue.js App',
-        }
+    data: () => ({
+      title: 'Vitrine',
+      appName: 'Desafio Dress&Go',
+      showNavigation: false,
+      showSidepanel: false,
+      products: [],
+      errors: []
+    }),
+    created() {
+        axios.get('/api/products?format=json').then(response => {
+          this.products = response.data
+        }).catch(e => {
+          this.errors.push(e)
+        })
     }
 }
 </script>
 
-<style>
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-
-[class^=md-elevation] {
-    padding: 15px;
-}
-
-h1, h2 {
-    font-weight: normal;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
-}
+<style lang="scss" scoped>
+  body {
+    min-height: 100%;
+  }
+  .md-app {
+    border: 1px solid rgba(#000, .12);
+  }
+  .page-container {
+    min-height: 100%;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(#000, .12);
+  }
+  .md-drawer {
+    width: 230px;
+    max-width: calc(100vw - 125px);
+  }
+  .md-content {
+    padding: 16px;
+  }
+  .md-layout-item.product {
+    margin-bottom: 15px;
+  }
 </style>

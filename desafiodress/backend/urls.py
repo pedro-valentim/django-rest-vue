@@ -4,11 +4,13 @@ from django.conf.urls import url, include, static
 from rest_framework import routers
 from backend import views
 
+
 router = routers.DefaultRouter()
 router.register(r'products', views.ProductViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
