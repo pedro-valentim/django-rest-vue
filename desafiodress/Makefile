@@ -22,6 +22,10 @@ migrate:
 	python ./manage makemigrations
 	python ./manage migrate
 
+# Loading Django data
+loaddata:
+	python ./manage loaddata backend.Product.json
+
 # Builds files for distribution which will be placed in /static/dist
 build: prod migrate
 	npm run build

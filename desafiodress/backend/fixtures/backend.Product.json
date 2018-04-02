@@ -1,0 +1,46 @@
+[
+{
+    "model": "backend.product",
+    "pk": 5,
+    "fields": {
+        "name": "Denim jacket blue",
+        "price": "92.50",
+        "stock_quantity": 100,
+        "photo": "products/e58fc0bc-99e2-458f-8181-58f533b57a2b.jpg",
+        "date_created": "2018-04-02T22:43:08.960Z"
+    }
+},
+{
+    "model": "backend.product",
+    "pk": 6,
+    "fields": {
+        "name": "Frayed denim shorts",
+        "price": "15.90",
+        "stock_quantity": 100,
+        "photo": "products/a0a28055-412e-46e4-8c46-85334e46f2eb.jpg",
+        "date_created": "2018-04-02T22:44:00.855Z"
+    }
+},
+{
+    "model": "backend.product",
+    "pk": 7,
+    "fields": {
+        "name": "Coach slim easton black",
+        "price": "165.00",
+        "stock_quantity": 40,
+        "photo": "products/51453fa9-c0ae-47f7-bb59-d91e7223801f.jpg",
+        "date_created": "2018-04-02T22:45:43.232Z"
+    }
+},
+{
+    "model": "backend.product",
+    "pk": 8,
+    "fields": {
+        "name": "Boxy T-Shirt with Roll Sleeve Detail",
+        "price": "22.00",
+        "stock_quantity": 195,
+        "photo": "products/6343a8cd-0d60-4809-8817-5ba8b826ddf4.jpg",
+        "date_created": "2018-04-02T22:46:17.777Z"
+    }
+}
+]
