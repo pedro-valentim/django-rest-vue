@@ -1,9 +1,7 @@
 .DS_Store
 node_modules
 static/dist
-media/
 npm-debug.log
-package-lock.json*
 .idea
 .venv
 db.sqlite3
