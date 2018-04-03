@@ -45,24 +45,20 @@
 
     <md-content>
       <div class="md-layout md-gutter md-alignment-center">
-        <div class="product md-layout-item md-medium-size-50 md-small-size-50 md-xsmall-size-100" v-for="product in products">
-          <md-card>
-            <md-card-media-cover md-text-scrim>
-              <md-card-media md-ratio="4:3">
+        <div class="product md-layout-item md-medium-size-50 md-small-size-50 md-xsmall-size-100" v-for="product in products" v-match-heights="{el: ['.product-card']}">
+          <md-card class="product-card">
+            <md-card-media md-ratio="4:3">
                 <img :src="product.photo" alt="Alt Text">
               </md-card-media>
-
-              <md-card-area>
-                <md-card-header>
-                  <span class="md-title">{{ product.name }}</span>
-                  <span class="md-subhead">$ {{ product.price }}</span>
-                </md-card-header>
-
-                <md-card-actions>
-                  <md-button>See More</md-button>
-                </md-card-actions>
-              </md-card-area>
-            </md-card-media-cover>
+  
+            <md-card-header>
+              <span class="md-title">{{ product.name }}</span><br>
+              <span class="md-subhead">$ {{ product.price }}</span>
+            </md-card-header>
+  
+            <md-card-actions>
+              <md-button>See More</md-button>
+            </md-card-actions>
           </md-card>
         </div>
       </div>

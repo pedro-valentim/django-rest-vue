@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueMaterial from 'vue-material'
-
-Vue.use(VueMaterial)
+import VueMatchHeights from 'vue-match-heights';
+ 
+Vue.use(VueMatchHeights);
+Vue.use(VueMaterial);
 
 new Vue({
     el: '#app',
