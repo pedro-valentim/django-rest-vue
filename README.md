@@ -28,6 +28,17 @@ As informações que devem ser armazenadas de cada local são:
 	- Criar API de produtos em Rest Framework.
 	
 # Passo a passo
+
+##### Dependencias de desenvolvimento
+
+* [NPM](https://www.npmjs.com/get-npm)
+* [virtualenv](https://virtualenv.pypa.io/en/stable/installation)
+
+Opcional
+
+* [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html)
+
+
 ##### Prepararando ambiente
 
 * Crie um virtualenv com **Python 3.6**, preferencialmente utilizando virtualenvwrapper:
