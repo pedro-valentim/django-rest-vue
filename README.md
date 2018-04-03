@@ -26,3 +26,30 @@ As informações que devem ser armazenadas de cada local são:
 	- Selecionar o produto na página de vitrine e abrir a página de produto.
 * API de produtos
 	- Criar API de produtos em Rest Framework.
+	
+# Passo a passo
+##### Prepararando ambiente
+
+* Crie um virtualenv com **Python 3.6**, preferencialmente utilizando virtualenvwrapper:
+
+```
+mkvirtualenv --python=/usr/bin/python3.6 desafio-dress
+```
+* Instalando dependências, migrando banco de dados e rodando servidores (node e Django):
+
+```
+sh ./prepare.sh
+```
+
+_Pronto! O sistema já deve estar disponível em localhost:8000_
+
+##### Rodando o projeto após já ter executado a preparação do ambiente
+
+* Mude para o diretório do projeto Django:
+```
+cd desafiodress
+```
+* Execute a diretiva **run** do Makefile:
+```
+make run
+```
