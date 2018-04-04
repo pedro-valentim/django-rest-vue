@@ -44,49 +44,25 @@
     </md-drawer>
 
     <md-content>
-      <div class="md-layout md-gutter md-alignment-center">
-        <div class="product md-layout-item md-medium-size-50 md-small-size-50 md-xsmall-size-100" v-for="product in products" v-match-heights="{el: ['.product-header']}">
-          <md-card>
-            <md-card-media md-ratio="4:3" class="product-photo">
-                <img :src="product.photo" alt="Alt Text">
-              </md-card-media>
-  
-            <md-card-header class="product-header">
-              <span class="md-title">{{ product.name }}</span><br>
-              <span class="md-subhead">$ {{ product.price }}</span>
-            </md-card-header>
-  
-            <md-card-actions>
-              <md-button>See More</md-button>
-            </md-card-actions>
-          </md-card>
-        </div>
-      </div>
+      <showcase />
     </md-content>
   </div>
 </template>
 
 <script>
-
-import axios from 'axios';
+import Showcase from './components/Showcase.vue';
 
 export default {
     name: 'app',
+    components: {
+      'showcase': Showcase
+    },
     data: () => ({
       title: 'Vitrine',
       appName: 'Desafio Dress&Go',
       showNavigation: false,
-      showSidepanel: false,
-      products: [],
-      errors: []
-    }),
-    created() {
-        axios.get('/api/products?format=json').then(response => {
-          this.products = response.data
-        }).catch(e => {
-          this.errors.push(e)
-        })
-    }
+      showSidepanel: false
+    })
 }
 </script>
 
@@ -109,8 +85,5 @@ export default {
   }
   .md-content {
     padding: 16px;
-  }
-  .md-layout-item.product {
-    margin-bottom: 15px;
   }
 </style>
